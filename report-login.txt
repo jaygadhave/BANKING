@@ -1,0 +1,59 @@
+try
+                {
+                    Connection con = null;
+                    FileInputStream in=new FileInputStream(new File("login.jrxml"));
+                    JasperDesign jd=JRXmlLoader.load(in);
+                    String sql="select * from login";
+                    JRDesignQuery newQuery=new JRDesignQuery();
+                    newQuery.setText(sql);
+                    jd.setQuery(newQuery);
+                    JasperReport jr=JasperCompileManager.compileReport(jd);
+                    HashMap para = new HashMap();
+                    JasperPrint j=JasperFillManager.fillReport(jr, para, con);
+                    JasperViewer.viewReport(j, false);
+                    FileOutputStream os= new FileOutputStream(new File("C:\\system"));
+                    JasperExportManager.exportReportToPdfStream(j, os);
+                }
+                
+                
+                catch (Exception e) 
+                {
+                        e.printStackTrace();
+                        System.out.println("error:"+e);
+                }
+
+
+
+
+
+
+
+
+
+
+
+R.D.Sharma     Mathematics.
+R.S.Agarwal    Reasoning, Analytical Ability.
+P.K.Sinha      Computer Science 
+
+
+
+
+
+
+
+
+
+
+
+try
+{
+    String file = "C:\\Users\\Jay\\Documents\\NetBeansProjects\\Banking Management Syatem\\src\\banking\\management\\system\\login.jrxml";
+    JasperReport jr=JasperCompileManager.compileReport(file);
+    JasperPrint jp = JasperFillManager.fillReport(jr, null,connection.project1);
+    JasperViewer.viewReport(jp);
+    
+}catch(Exception e)
+{
+                    
+}
